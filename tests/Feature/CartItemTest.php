@@ -1,6 +1,6 @@
 <?php
 
-namespace Gloudemans\Tests\Shoppingcart;
+namespace Gloudemans\Tests\Shoppingcart\Feature;
 
 use Gloudemans\Shoppingcart\CartItem;
 use Gloudemans\Shoppingcart\ShoppingcartServiceProvider;

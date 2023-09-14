@@ -1,12 +1,13 @@
 <?php
 
-namespace Gloudemans\Tests\Shoppingcart;
+namespace Gloudemans\Tests\Shoppingcart\Feature;
 
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Calculation\GrossPrice;
 use Gloudemans\Shoppingcart\Cart;
 use Gloudemans\Shoppingcart\CartItem;
 use Gloudemans\Shoppingcart\ShoppingcartServiceProvider;
+use Gloudemans\Tests\Shoppingcart\CartAssertions;
 use Gloudemans\Tests\Shoppingcart\Fixtures\BuyableProduct;
 use Gloudemans\Tests\Shoppingcart\Fixtures\BuyableProductTrait;
 use Gloudemans\Tests\Shoppingcart\Fixtures\Identifiable;
@@ -157,8 +158,8 @@ class CartTest extends TestCase
         ])]);
 
         $this->assertTrue(is_array($cartItems));
-        $this->assertCount(2, $cartItems);
-        $this->assertContainsOnlyInstancesOf(CartItem::class, $cartItems);
+        $this->assertCount(2, $cartItems->toArray());
+        $this->assertContainsOnlyInstancesOf(CartItem::class, $cartItems->toArray());
 
         Event::assertDispatched('cart.added');
     }
